@@ -19,7 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Include your app’s URLs at the root URL
     path('', include('recipebox_app.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
