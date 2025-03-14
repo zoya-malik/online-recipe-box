@@ -11,7 +11,6 @@ start the development server:
 
 python manage.py runserver
 
-
 recipebox_app/
 └── templates/
     ├── registration/
