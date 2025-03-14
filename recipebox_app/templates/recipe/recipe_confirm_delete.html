@@ -1,0 +1,8 @@
+<h1>Delete Recipe</h1>
+<p>Are you sure you want to delete "{{ recipe.title }}"?</p>
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">Yes, delete</button>
+</form>
+<a href="{% url 'recipebox_app:recipe-list' %}">Cancel</a>
+

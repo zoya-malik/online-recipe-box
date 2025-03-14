@@ -1,0 +1,7 @@
+<h1>Shopping List: {{ shoppinglist.name }}</h1>
+<p><strong>User:</strong> {{ shoppinglist.user.username }}</p>
+<br>
+<a href="{% url 'recipebox_app:shoppinglist-update' shoppinglist.pk %}">Edit</a> |
+<a href="{% url 'recipebox_app:shoppinglist-delete' shoppinglist.pk %}">Delete</a> |
+<a href="{% url 'recipebox_app:shoppinglist-list' %}">Back to Shopping Lists</a>
+

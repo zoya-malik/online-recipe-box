@@ -1,0 +1,96 @@
+from django.urls import path
+from .views import (
+    index,
+    client_register,
+    profile_view,
+    profile_edit_view,
+    RecipeListView,
+    RecipeDetailView,
+    RecipeCreateView,
+    RecipeUpdateView,
+    RecipeDeleteView,
+    IngredientListView,
+    IngredientDetailView,
+    IngredientCreateView,
+    IngredientUpdateView,
+    IngredientDeleteView,
+    RecipeLibraryListView,
+    RecipeLibraryDetailView,
+    RecipeLibraryCreateView,
+    RecipeLibraryUpdateView,
+    RecipeLibraryDeleteView,
+    FolderListView,
+    FolderDetailView,
+    FolderCreateView,
+    FolderUpdateView,
+    FolderDeleteView,
+    ReviewListView,
+    ReviewDetailView,
+    ReviewCreateView,
+    ReviewUpdateView,
+    ReviewDeleteView,
+    TagListView,
+    TagDetailView,
+    TagCreateView,
+    TagUpdateView,
+    TagDeleteView,
+    ShoppingListListView,
+    ShoppingListDetailView,
+    ShoppingListCreateView,
+    ShoppingListUpdateView,
+    ShoppingListDeleteView,
+)
+
+app_name = 'recipebox_app'
+
+urlpatterns = [
+    path('', index, name='index'),
+
+    path('register/', client_register, name='client-register'),
+
+    path('accounts/profile/', profile_view, name='profile'),
+    path('accounts/profile/edit/', profile_edit_view, name='profile-edit'),
+
+    path('recipes/', RecipeListView.as_view(), name='recipe-list'),
+    path('recipes/create/', RecipeCreateView.as_view(), name='recipe-create'),
+    path('recipes/<int:pk>/', RecipeDetailView.as_view(), name='recipe-detail'),
+    path('recipes/<int:pk>/update/', RecipeUpdateView.as_view(), name='recipe-update'),
+    path('recipes/<int:pk>/delete/', RecipeDeleteView.as_view(), name='recipe-delete'),
+
+    path('ingredients/', IngredientListView.as_view(), name='ingredient-list'),
+    path('ingredients/create/', IngredientCreateView.as_view(), name='ingredient-create'),
+    path('ingredients/<int:pk>/', IngredientDetailView.as_view(), name='ingredient-detail'),
+    path('ingredients/<int:pk>/update/', IngredientUpdateView.as_view(), name='ingredient-update'),
+    path('ingredients/<int:pk>/delete/', IngredientDeleteView.as_view(), name='ingredient-delete'),
+
+    path('libraries/', RecipeLibraryListView.as_view(), name='library-list'),
+    path('libraries/create/', RecipeLibraryCreateView.as_view(), name='library-create'),
+    path('libraries/<int:pk>/', RecipeLibraryDetailView.as_view(), name='library-detail'),
+    path('libraries/<int:pk>/update/', RecipeLibraryUpdateView.as_view(), name='library-update'),
+    path('libraries/<int:pk>/delete/', RecipeLibraryDeleteView.as_view(), name='library-delete'),
+
+    path('folders/', FolderListView.as_view(), name='folder-list'),
+    path('folders/create/', FolderCreateView.as_view(), name='folder-create'),
+    path('folders/<int:pk>/', FolderDetailView.as_view(), name='folder-detail'),
+    path('folders/<int:pk>/update/', FolderUpdateView.as_view(), name='folder-update'),
+    path('folders/<int:pk>/delete/', FolderDeleteView.as_view(), name='folder-delete'),
+
+    path('reviews/', ReviewListView.as_view(), name='review-list'),
+    path('reviews/create/', ReviewCreateView.as_view(), name='review-create'),
+    path('reviews/<int:pk>/', ReviewDetailView.as_view(), name='review-detail'),
+    path('reviews/<int:pk>/update/', ReviewUpdateView.as_view(), name='review-update'),
+    path('reviews/<int:pk>/delete/', ReviewDeleteView.as_view(), name='review-delete'),
+
+    path('tags/', TagListView.as_view(), name='tag-list'),
+    path('tags/create/', TagCreateView.as_view(), name='tag-create'),
+    path('tags/<int:pk>/', TagDetailView.as_view(), name='tag-detail'),
+    path('tags/<int:pk>/update/', TagUpdateView.as_view(), name='tag-update'),
+    path('tags/<int:pk>/delete/', TagDeleteView.as_view(), name='tag-delete'),
+
+    path('shoppinglists/', ShoppingListListView.as_view(), name='shoppinglist-list'),
+    path('shoppinglists/create/', ShoppingListCreateView.as_view(), name='shoppinglist-create'),
+    path('shoppinglists/<int:pk>/', ShoppingListDetailView.as_view(), name='shoppinglist-detail'),
+    path('shoppinglists/<int:pk>/update/', ShoppingListUpdateView.as_view(), name='shoppinglist-update'),
+    path('shoppinglists/<int:pk>/delete/', ShoppingListDeleteView.as_view(), name='shoppinglist-delete'),
+]
+

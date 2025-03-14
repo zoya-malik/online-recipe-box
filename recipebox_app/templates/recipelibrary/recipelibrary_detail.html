@@ -1,0 +1,8 @@
+<h1>{{ library.user.username }}'s Library Entry</h1>
+<p><strong>Recipe:</strong> {{ library.recipe.title }}</p>
+<p><strong>Date Saved:</strong> {{ library.date_saved }}</p>
+<br>
+<a href="{% url 'recipebox_app:library-update' library.pk %}">Edit</a> |
+<a href="{% url 'recipebox_app:library-delete' library.pk %}">Delete</a> |
+<a href="{% url 'recipebox_app:library-list' %}">Back to Library List</a>
+

@@ -1,0 +1,12 @@
+<h1>All Reviews</h1>
+<ul>
+  {% for review in reviews %}
+    <li>
+      <a href="{% url 'recipebox_app:review-detail' review.pk %}">
+        Review by {{ review.user.username }} on {{ review.recipe.title }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'recipebox_app:review-create' %}">Create New Review</a>
+

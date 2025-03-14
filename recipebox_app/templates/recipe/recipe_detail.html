@@ -1,0 +1,12 @@
+<h1>{{ recipe.title }}</h1>
+<p><strong>Cook Time:</strong> {{ recipe.cook_time }} mins</p>
+<p><strong>Average Rating:</strong> {{ recipe.avg_rating }}</p>
+<p><strong>Instructions:</strong> {{ recipe.instructions }}</p>
+{% if recipe.image %}
+  <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+{% endif %}
+<br>
+<a href="{% url 'recipebox_app:recipe-update' recipe.pk %}">Edit</a> |
+<a href="{% url 'recipebox_app:recipe-delete' recipe.pk %}">Delete</a> |
+<a href="{% url 'recipebox_app:recipe-list' %}">Back to Recipes</a>
+

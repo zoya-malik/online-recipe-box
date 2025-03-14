@@ -1,0 +1,8 @@
+<h1>Login</h1>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
+<a href="{% url 'recipebox_app:client-register' %}">Don't have an account? Sign Up</a>
+

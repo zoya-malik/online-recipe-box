@@ -1,0 +1,6 @@
+<h1>Tag: {{ tag.name }}</h1>
+<br>
+<a href="{% url 'recipebox_app:tag-update' tag.pk %}">Edit</a> |
+<a href="{% url 'recipebox_app:tag-delete' tag.pk %}">Delete</a> |
+<a href="{% url 'recipebox_app:tag-list' %}">Back to Tag List</a>
+

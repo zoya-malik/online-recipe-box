@@ -1,0 +1,8 @@
+<h1>Delete Library Entry</h1>
+<p>Are you sure you want to delete the library entry for "{{ library.recipe.title }}"?</p>
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">Yes, delete</button>
+</form>
+<a href="{% url 'recipebox_app:library-list' %}">Cancel</a>
+

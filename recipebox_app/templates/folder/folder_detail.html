@@ -1,0 +1,7 @@
+<h1>{{ folder.name }}</h1>
+<p><strong>User:</strong> {{ folder.user.username }}</p>
+<br>
+<a href="{% url 'recipebox_app:folder-update' folder.pk %}">Edit</a> |
+<a href="{% url 'recipebox_app:folder-delete' folder.pk %}">Delete</a> |
+<a href="{% url 'recipebox_app:folder-list' %}">Back to Folder List</a>
+

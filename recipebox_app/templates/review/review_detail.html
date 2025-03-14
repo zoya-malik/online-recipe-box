@@ -1,0 +1,9 @@
+<h1>Review by {{ review.user.username }} on {{ review.recipe.title }}</h1>
+<p><strong>Rating:</strong> {{ review.rating }}</p>
+<p><strong>Comment:</strong> {{ review.comment }}</p>
+<p><strong>Date Posted:</strong> {{ review.date_posted }}</p>
+<br>
+<a href="{% url 'recipebox_app:review-update' review.pk %}">Edit</a> |
+<a href="{% url 'recipebox_app:review-delete' review.pk %}">Delete</a> |
+<a href="{% url 'recipebox_app:review-list' %}">Back to Reviews</a>
+

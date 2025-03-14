@@ -1,0 +1,8 @@
+<h1>{% if form.instance.pk %}Edit Review{% else %}Create Review{% endif %}</h1>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Save</button>
+</form>
+<a href="{% url 'recipebox_app:review-list' %}">Cancel</a>
+

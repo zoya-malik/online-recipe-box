@@ -1,0 +1,10 @@
+<h1>All Recipe Library Entries</h1>
+<ul>
+  {% for library in libraries %}
+    <li>
+      <a href="{% url 'recipebox_app:library-detail' library.pk %}">{{ library.user.username }}'s Library - {{ library.recipe.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'recipebox_app:library-create' %}">Create New Library Entry</a>
+

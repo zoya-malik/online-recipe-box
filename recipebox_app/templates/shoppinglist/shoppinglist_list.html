@@ -1,0 +1,12 @@
+<h1>All Shopping Lists</h1>
+<ul>
+  {% for shoppinglist in shoppinglists %}
+    <li>
+      <a href="{% url 'recipebox_app:shoppinglist-detail' shoppinglist.pk %}">
+        {{ shoppinglist.name }} ({{ shoppinglist.user.username }})
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'recipebox_app:shoppinglist-create' %}">Create New Shopping List</a>
+

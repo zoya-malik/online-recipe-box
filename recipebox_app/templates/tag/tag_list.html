@@ -1,0 +1,10 @@
+<h1>All Tags</h1>
+<ul>
+  {% for tag in tags %}
+    <li>
+      <a href="{% url 'recipebox_app:tag-detail' tag.pk %}">{{ tag.name }}</a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'recipebox_app:tag-create' %}">Create New Tag</a>
+

@@ -1,0 +1,11 @@
+<h1>{{ user.username }}'s Profile</h1>
+<p><strong>First Name:</strong> {{ user.first_name }}</p>
+<p><strong>Last Name:</strong> {{ user.last_name }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+
+<!-- Links for convenience -->
+<a href="{% url 'recipebox_app:profile-edit' %}">Edit Profile</a> |
+<a href="/">Home</a> |
+<a href="{% url 'recipebox_app:recipe-list' %}">Browse Recipes</a> |
+<a href="{% url 'logout' %}">Logout</a>
+

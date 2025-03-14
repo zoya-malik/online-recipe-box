@@ -1,0 +1,10 @@
+<h1>All Ingredients</h1>
+<ul>
+  {% for ingredient in ingredients %}
+    <li>
+      <a href="{% url 'recipebox_app:ingredient-detail' ingredient.pk %}">{{ ingredient.name }}</a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'recipebox_app:ingredient-create' %}">Create New Ingredient</a>
+

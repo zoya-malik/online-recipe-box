@@ -1,0 +1,7 @@
+<h1>{{ ingredient.name }}</h1>
+<p><strong>Quantity:</strong> {{ ingredient.quantity }} {{ ingredient.unit }}</p>
+<br>
+<a href="{% url 'recipebox_app:ingredient-update' ingredient.pk %}">Edit</a> |
+<a href="{% url 'recipebox_app:ingredient-delete' ingredient.pk %}">Delete</a> |
+<a href="{% url 'recipebox_app:ingredient-list' %}">Back to Ingredients</a>
+

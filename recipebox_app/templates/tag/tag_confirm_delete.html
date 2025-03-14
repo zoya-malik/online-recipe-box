@@ -1,0 +1,8 @@
+<h1>Delete Tag</h1>
+<p>Are you sure you want to delete the tag "{{ tag.name }}"?</p>
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">Yes, delete</button>
+</form>
+<a href="{% url 'recipebox_app:tag-list' %}">Cancel</a>
+

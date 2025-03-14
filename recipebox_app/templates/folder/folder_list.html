@@ -1,0 +1,10 @@
+<h1>All Folders</h1>
+<ul>
+  {% for folder in folders %}
+    <li>
+      <a href="{% url 'recipebox_app:folder-detail' folder.pk %}">{{ folder.name }}</a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'recipebox_app:folder-create' %}">Create New Folder</a>
+

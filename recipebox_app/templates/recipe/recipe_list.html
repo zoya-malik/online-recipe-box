@@ -1,0 +1,10 @@
+<h1>All Recipes</h1>
+<ul>
+  {% for recipe in recipes %}
+    <li>
+      <a href="{% url 'recipebox_app:recipe-detail' recipe.pk %}">{{ recipe.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'recipebox_app:recipe-create' %}">Create New Recipe</a>
+
