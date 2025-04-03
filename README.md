@@ -1,34 +1,43 @@
-- To create a virtual environment:
-	
-	python3 -m venv recipebox_env
-	source recipebox_env/bin/activate
+# Online Recipe Box
 
-- install dependencies:
-	
-	pip install django mysqlclient Pillow
-	
+An online recipe management application built using Django. This application allows users to browse, search, and manage recipes. Admins can manage tags and recipes, while clients can register, browse, save recipes, and leave reviews.
 
-- Ensure MySQL is installed:
+## Prerequisites
 
-	brew install mysql
-	brew services start mysql
+Make sure you have the following installed on your machine:
+- Python 3.12 or later
+- Django 5.1.3
+- Anaconda (for managing virtual environments)
+- Git
 
+## Installation Instructions
 
-- Open MySQL by running:
-	mysql -u root -p
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/zoya-malik/online-recipe-box.git
+   cd online-recipe-box
 
-- Inside the MySQL shell run:
-  
-	CREATE DATABASE recipebox;
-	CREATE USER 'recipeadmin'@'localhost' IDENTIFIED BY 'securepassword';
-	GRANT ALL PRIVILEGES ON recipebox.* TO 'recipeadmin'@'localhost';
-	FLUSH PRIVILEGES;
-	EXIT;
+2. **Create a virtual environment using Anaconda**
+   ```bash
+   conda create --name recipebox python=3.12
+   conda activate recipebox
 
-- Apply the migrations:
-	python manage.py makemigrations
-	python manage.py migrate
+3. **Install the required packages**
+   ```bash
+   pip install -r requirements.txt
 
-- start the development server:
+## Database Setup
 
-	python manage.py runserver
+1. **Make Migrations**
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+
+## Running the Server
+
+1. **Make Migrations**
+   ```bash
+   python manage.py runserver
+
+The server will start at http://127.0.0.1:8000/
+
