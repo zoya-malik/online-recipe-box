@@ -16,7 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -26,9 +25,9 @@ SECRET_KEY = "django-insecure-jjs)wr=14u7syim3=(bt58m)ag#xij%*_2yhu2+p739huq7)3$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
-
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -36,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'recipebox_app',  # Our app
+    'recipebox_app',  # Our custom app
 ]
 
 MIDDLEWARE = [
@@ -69,12 +68,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'recipebox.wsgi.application'
 
+# Database configuration using MySQL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'recipebox',
         'USER': 'recipeadmin',
-        'PASSWORD': 'securepassword',
+        'PASSWORD': 'Securepassword123!',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
@@ -83,10 +83,13 @@ DATABASES = {
     }
 }
 
+# Custom user model
 AUTH_USER_MODEL = 'recipebox_app.CustomUser'
-# In recipebox/settings.py
+
+# Login redirect after successful authentication
 LOGIN_REDIRECT_URL = '/accounts/profile/'
 
+# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -96,10 +99,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_TZ = True
 
+# Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# Media files (Uploaded images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

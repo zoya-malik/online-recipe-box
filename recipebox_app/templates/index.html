@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - RecipeBox{% endblock %}
+
+{% block content %}
+<h1>Welcome to RecipeBox!</h1>
+<p>Discover, create, and manage your favorite recipes.</p>
+
+<div>
+    <h2>Quick Links</h2>
+    <ul>
+        <li><a href="{% url 'recipebox_app:recipe-list' %}">View All Recipes</a></li>
+        <li><a href="{% url 'recipebox_app:ingredient-list' %}">Browse Ingredients</a></li>
+        <li><a href="{% url 'recipebox_app:library-list' %}">Your Recipe Library</a></li>
+        <li><a href="{% url 'recipebox_app:folder-list' %}">Manage Folders</a></li>
+        <li><a href="{% url 'recipebox_app:review-list' %}">View Reviews</a></li>
+        <li><a href="{% url 'recipebox_app:tag-list' %}">Browse Tags</a></li>
+        <li><a href="{% url 'recipebox_app:shoppinglist-list' %}">Your Shopping Lists</a></li>
+    </ul>
+</div>
+{% endblock %}
+

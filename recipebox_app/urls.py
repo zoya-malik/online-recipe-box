@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import (
     index,
+    search,
     client_register,
     profile_view,
     profile_edit_view,
@@ -45,7 +46,7 @@ app_name = 'recipebox_app'
 
 urlpatterns = [
     path('', index, name='index'),
-
+    path('search/', search, name='search'),
     path('register/', client_register, name='client-register'),
 
     path('accounts/profile/', profile_view, name='profile'),
@@ -93,4 +94,3 @@ urlpatterns = [
     path('shoppinglists/<int:pk>/update/', ShoppingListUpdateView.as_view(), name='shoppinglist-update'),
     path('shoppinglists/<int:pk>/delete/', ShoppingListDeleteView.as_view(), name='shoppinglist-delete'),
 ]
-

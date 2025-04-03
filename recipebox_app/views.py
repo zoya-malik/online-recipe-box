@@ -1,5 +1,6 @@
 # recipebox_app/views.py
-
+from django.db.models import Q
+from .models import Recipe, Ingredient, Tag
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login
@@ -8,19 +9,14 @@ from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView
 )
 from django.contrib.auth.decorators import login_required
-from .forms import UserUpdateForm
-
-from .models import (
-    Recipe,
-    Ingredient,
-    RecipeLibrary,
-    Folder,
-    Review,
-    Tag,
-    ShoppingList
+from .forms import (
+    UserUpdateForm, ClientRegistrationForm, RecipeForm, 
+    IngredientForm, FolderForm, ReviewForm, TagForm, ShoppingListForm
 )
-
-from .forms import ClientRegistrationForm
+from .models import (
+    Recipe, Ingredient, RecipeLibrary, Folder, 
+    Review, Tag, ShoppingList, CustomUser
+)
 
 @login_required
 def profile_view(request):
@@ -45,9 +41,7 @@ def profile_edit_view(request):
     return render(request, 'registration/profile_edit.html', {'form': form})
 
 def index(request):
-    """Simple home page view."""
-    return HttpResponse("Welcome to the Online Recipe Box!")
-
+    return render(request, 'index.html')
 
 def client_register(request):
     """
@@ -64,7 +58,18 @@ def client_register(request):
         form = ClientRegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+def search(request):
+    query = request.GET.get('q')
+    if query:
+        results = Recipe.objects.filter(title__icontains=query)
+    else:
+        results = Recipe.objects.all()
+    return render(request, 'search_results.html', {'results': results})
 
+
+
+
+# Recipe Views
 class RecipeListView(ListView):
     model = Recipe
     template_name = 'recipe/recipe_list.html'
@@ -92,7 +97,7 @@ class RecipeDeleteView(DeleteView):
     template_name = 'recipe/recipe_confirm_delete.html'
     success_url = reverse_lazy('recipebox_app:recipe-list')
 
-
+# Ingredient Views
 class IngredientListView(ListView):
     model = Ingredient
     template_name = 'ingredient/ingredient_list.html'
@@ -120,7 +125,7 @@ class IngredientDeleteView(DeleteView):
     template_name = 'ingredient/ingredient_confirm_delete.html'
     success_url = reverse_lazy('recipebox_app:ingredient-list')
 
-
+# Recipe Library Views
 class RecipeLibraryListView(ListView):
     model = RecipeLibrary
     template_name = 'recipelibrary/recipelibrary_list.html'
@@ -148,7 +153,7 @@ class RecipeLibraryDeleteView(DeleteView):
     template_name = 'recipelibrary/recipelibrary_confirm_delete.html'
     success_url = reverse_lazy('recipebox_app:library-list')
 
-
+# Folder Views
 class FolderListView(ListView):
     model = Folder
     template_name = 'folder/folder_list.html'
@@ -176,7 +181,7 @@ class FolderDeleteView(DeleteView):
     template_name = 'folder/folder_confirm_delete.html'
     success_url = reverse_lazy('recipebox_app:folder-list')
 
-
+# Review Views
 class ReviewListView(ListView):
     model = Review
     template_name = 'review/review_list.html'
@@ -204,7 +209,7 @@ class ReviewDeleteView(DeleteView):
     template_name = 'review/review_confirm_delete.html'
     success_url = reverse_lazy('recipebox_app:review-list')
 
-
+# Tag Views
 class TagListView(ListView):
     model = Tag
     template_name = 'tag/tag_list.html'
@@ -232,7 +237,7 @@ class TagDeleteView(DeleteView):
     template_name = 'tag/tag_confirm_delete.html'
     success_url = reverse_lazy('recipebox_app:tag-list')
 
-
+# Shopping List Views
 class ShoppingListListView(ListView):
     model = ShoppingList
     template_name = 'shoppinglist/shoppinglist_list.html'
@@ -246,17 +251,17 @@ class ShoppingListDetailView(DetailView):
 class ShoppingListCreateView(CreateView):
     model = ShoppingList
     template_name = 'shoppinglist/shoppinglist_form.html'
-    fields = ['user', 'name']
+    fields = ['name', 'user']
     success_url = reverse_lazy('recipebox_app:shoppinglist-list')
 
 class ShoppingListUpdateView(UpdateView):
     model = ShoppingList
     template_name = 'shoppinglist/shoppinglist_form.html'
-    fields = ['user', 'name']
+    fields = ['name', 'user']
     success_url = reverse_lazy('recipebox_app:shoppinglist-list')
 
 class ShoppingListDeleteView(DeleteView):
     model = ShoppingList
     template_name = 'shoppinglist/shoppinglist_confirm_delete.html'
     success_url = reverse_lazy('recipebox_app:shoppinglist-list')
-
+      

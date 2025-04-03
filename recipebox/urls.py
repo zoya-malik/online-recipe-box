@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from recipebox_app.views import search  # Corrected import
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('recipebox_app.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('search/', search, name='search'),  # Keep search only here
+    path('', include('recipebox_app.urls')),  # Include app-specific URLs
 ]
 

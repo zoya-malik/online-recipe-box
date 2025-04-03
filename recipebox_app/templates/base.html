@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}RecipeBox{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="{% url 'recipebox_app:index' %}">Home</a>
+        <a href="{% url 'recipebox_app:recipe-list' %}">Recipes</a>
+        <a href="{% url 'recipebox_app:ingredient-list' %}">Ingredients</a>
+        <a href="{% url 'recipebox_app:library-list' %}">Library</a>
+        <a href="{% url 'recipebox_app:folder-list' %}">Folders</a>
+        <a href="{% url 'recipebox_app:review-list' %}">Reviews</a>
+        <a href="{% url 'recipebox_app:tag-list' %}">Tags</a>
+        <a href="{% url 'recipebox_app:shoppinglist-list' %}">Shopping Lists</a>
+
+        <!-- Search Form -->
+        <form method="GET" action="{% url 'recipebox_app:search' %}">
+            <input type="text" name="q" placeholder="Search for recipes...">
+            <button type="submit">Search</button>
+        </form>
+    </nav>
+
+    <!-- Main Content -->
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
+
